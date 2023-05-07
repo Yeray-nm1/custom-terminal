@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "#49C1AD",
+          "foreground": "#000000",
+          "leading_diamond": "\ue0b6",
+          "powerline_symbol": "\ue0b0",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "template": "\ufcbe{{ .UserName }}  ",
+          "type": "session"
+        },
+        {
+          "background": "#4B99E7",
+          "foreground": "#000000",
+          "properties": {
+            "style": "agnoster_short"
+          },
+          "trailing_diamond": "\ue0b0",
+          "leading_diamond": "<transparent>\ue0b0</>",
+          "style": "diamond",
+          "template": " \ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "#EB792D",
+          "background_templates": [
+            "{{ if gt .Behind 0 }}#F25050{{ end }}",
+            "{{ if gt .Ahead 0 }}#8DEE58{{ end }}"
+          ],
+          "foreground": "#000000",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "branch_icon": "\uF126 ",
+            "branch_dirty_icon": "\uf0a3",
+            "tag_icon": "\uF412",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }} {{ if (.Working.Changed) }}| \uF067 {{ end }}{{ if (.Staging.Changed) }}| \uf00c \uf0a3 {{ end }}{{ if gt .Ahead 0 }}| \uf062 {{ .Ahead }}{{ end }} {{ if gt .Behind 0 }}\uf063 {{ .Behind }}{{ end }} {{ if .Working.Unmerged }}| \uF0E2 {{ end }}",
+          "type": "git"
+        },
+        {
+          "background_templates": [
+            "{{ if gt .Code 0 }}#6B37B3{{ end }}"
+          ],
+          "foreground": "#ffffff",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "diamond",
+          "template": " {{ if gt .Code 0 }}Command not found!{{ end }}",
+          "trailing_diamond": "\ue0b4",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "\u279c ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "console_title_template": "{{.UserName}} @ {{.Folder}}",
+  "version": 2
+}
